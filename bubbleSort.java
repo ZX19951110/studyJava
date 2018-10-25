@@ -2,25 +2,20 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class bubbleSort{
-    public bubbleSort (int[] sortList){
-        int fin = sortList.length-1;
-        while (fin > 0) {
-            for (int i = 0 ; i <= fin; i++) {
-                int temp;
-                try {
-                    if (sortList[i] < sortList[i + 1]) {
-                        temp = sortList[i + 1];
-                        sortList[i + 1] = sortList[i];
-                        sortList[i] = temp;
-                    }
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    continue;
+    public bubbleSort (int[] sortList) {
+        int length = sortList.length;
+        while (length >= 0) {
+            for (int i = 0; i + 1 < length; i++) {
+                if (sortList[i + 1] <= sortList[i]) {
+                    int temp = sortList[i + 1];
+                    sortList[i + 1] = sortList[i];
+                    sortList[i] = temp;
                 }
             }
-            fin--;
+            length--;
         }
-        for (int j : sortList){
-            System.out.println(j);
+        for (int i : sortList){
+            System.out.println(i);
         }
     }
     public static void main(String args[]){
