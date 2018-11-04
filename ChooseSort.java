@@ -1,36 +1,20 @@
-import java.util.ArrayList;
-
 public class ChooseSort {
-    public ChooseSort(ArrayList<Integer> sortList){
-        Integer min = sortList.get(0);
-        Integer count = sortList.size();
-        ArrayList<Integer> resList = new ArrayList<Integer>();
-        for (;resList.size() < count;){
-            min = sortList.get(0);
-            for (int i = 0; i<sortList.size(); i++) {
-                if (min > sortList.get(i)) {
-                    min = sortList.get(i);
-                }
+     void sort(int[] arr){
+        for (int i = 0; i < arr.length; i++){
+            int index = i;
+            for(int j = i; j < arr.length; j++){
+                if(arr[j] < arr[index]) index = j;
             }
-                resList.add(min);
-                for (int j = 0;j < sortList.size();j++){
-                    if (sortList.get(j) == min){
-                        sortList.remove(j);
-                }
-            }
-        }
-        for (int k = 0;k < resList.size();k++){
-            System.out.println(resList.get(k));
+            int temp = arr[i];
+            arr[i] = arr[index];
+            arr[index] = temp;
         }
     }
     public static void main(String args[]){
-        ArrayList<Integer> sortArr = new ArrayList<Integer>();
-        sortArr.add(3);
-        sortArr.add(5);
-        sortArr.add(1);
-        sortArr.add(10);
-        sortArr.add(555);
-        sortArr.add(90);
-        new ChooseSort(sortArr);
+        int arr[] = {8,4,10,9,1,3,5,9,2};
+        new ChooseSort().sort(arr);
+        for(int i : arr){
+            System.out.println(i);
+        }
     }
 }

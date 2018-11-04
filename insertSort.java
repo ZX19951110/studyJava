@@ -1,35 +1,20 @@
 public class insertSort {
-    public insertSort(int[] sortList){
-        int move = 1;
-        for (; move < sortList.length;){
-            if (sortList[move] < sortList[move-1]){
-                int temp = sortList[move];
-                for (int i = move;; i--){
-                    if (i == 0) {
-                        sortList[i] = temp;
-                        break;
-                    }
-                    if (sortList[i-1] < temp){
-                        sortList[i] = temp;
-                        break;
-                    }
-                    sortList[i] = sortList[i-1];
-                }
-
-            }
-            move++;
-
-
-        }
-        System.out.println("___________");
-        for(int i : sortList){
-            System.out.println(i);
-
-        }
-        System.out.println("___________");
+    insertSort(int[] sortList){
+       for(int i = 1; i < sortList.length; i++){
+           for (int j = i; j > 0; j--){
+               if (sortList[j] < sortList[j-1]){
+                   int temp = sortList[j];
+                   sortList[j] = sortList[j-1];
+                   sortList[j-1] = temp;
+               }
+           }
+       }
     }
     public static void main(String args[]){
-        int[] sortArr = {2,4,1,5,6,3,10,66,8,9};
+        int[] sortArr = {4,2,4,0,1,5,6,3};
         new insertSort(sortArr);
+        for(int i : sortArr){
+            System.out.println(i);
+        }
     }
 }
